@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Beloved Rara</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+    .slide {
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .active {
+        display: flex;
+    }
+    .start-btn {
+        font-size: 2rem;
+        padding: 15px 30px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid white;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .start-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    .next-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        background: rgba(255,255,255,0.3);
+        border: 2px solid white;
+        border-radius: 8px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active" id="slide1" style="background: #222;">
+    <div class="start-btn" onclick="startShow()">Dorr<3</div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide2" style="background: pink;">
+    <h1>Dorrr lagi❤️</h1>
+    <p>Semangat sayangg.</p>
+    <button class="next-btn" onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="slide3" style="background: purple;">
+    <h1>Dor 💕</h1>
+    <p>Keren gak.</p>
+</div>
+
+<!-- Music -->
+<audio id="music1" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
+<audio id="music2" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
+
+<script>
+    let currentSlide = 1;
+
+    function startShow() {
+        document.getElementById(`slide${currentSlide}`).classList.remove('active');
+        currentSlide = 2;
+        document.getElementById(`slide${currentSlide}`).classList.add('active');
+        playMusic(1);
+    }
+
+    function nextSlide() {
+        document.getElementById(`slide${currentSlide}`).classList.remove('active');
+        currentSlide++;
+        document.getElementById(`slide${currentSlide}`).classList.add('active');
+        if (currentSlide === 3) {
+            stopMusic(1);
+            playMusic(2);
+        }
+    }
+
+    function playMusic(num) {
+        let music = document.getElementById(`music${num}`);
+        music.currentTime = 0;
+        music.play();
+    }
+
+    function stopMusic(num) {
+        let music = document.getElementById(`music${num}`);
+        music.pause();
+        music.currentTime = 0;
+    }
+</script>
+
+</body>
+</html>
